@@ -10,8 +10,7 @@ class PokemonIndex extends React.Component {
     this.state = {
       pokemons: [],
       results:[],
-      value: "",
-      newPoke:[]
+      value: ""
     }
   }
   componentWillMount = () => {
@@ -35,10 +34,71 @@ class PokemonIndex extends React.Component {
     }, 300)
   }
 
-  handlePostPokemon = (newPokemonObj) => {
-    // this.setState({newPoke:this.newPokemonObj})
+  handleNewPokeValues(newPokemonObj) {
+    let newPokemon = newPokemonObj;
+    fetch('http://localhost:3000/pokemon', {
+      method: "POST",
+      headers: {
+        "Content-Type":"application/json",
+        "Accept":"application/json"
+      }, body: JSON.stringify({
+        "height": 4,
+        "weight": 40,
+        "id": 1,
+        "name": newPokemon.name,
+        "abilities": [
+          "synchronize"
+        ],
+        "moves": [
+          "pound",
+          "mega-punch",
+          "pay-day",
+          "razor-wind",
+          "whirlwind",
+          "fly",
+          "mega-kick",
+          "horn-drill",
+          "bubble-beam",
+          "submission"
+        ],
+        "stats": [
+          {
+            "value": 100,
+            "name": "speed"
+          },
+          {
+            "value": 100,
+            "name": "special-defense"
+          },
+          {
+            "value": 100,
+            "name": "special-attack"
+          },
+          {
+            "value": 100,
+            "name": "defense"
+          },
+          {
+            "value": 100,
+            "name": "attack"
+          },
+          {
+            "value": 100,
+            "name": "hp"
+          }
+        ],
+        "types": [
+          "psychic"
+        ],
+        "sprites": {
+          "front": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/151.png",
+          "back": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/151.png"
+        }
+      })
+    })
   }
   render() {
+
     return (
       <div>
         <h1>Pokemon Searcher</h1>
@@ -54,7 +114,7 @@ class PokemonIndex extends React.Component {
           />
         <br />
         <PokemonForm
-          // handlePostPokemon={this.handlePostPokemon(this.newPokemonObj)}
+          handleNewPokeValues={this.handleNewPokeValues}
          />
       </div>
     )
@@ -66,44 +126,5 @@ export default PokemonIndex
 
 
 
-// {"pokemon": [
-//   {
-//     "height": 10,
-//     "weight": 130,
-//     "id": 2,
-//     "name": "ivysaur",
-//     "abilities": ["overgrow", "chlorophyll"],
-//     "moves": [],
-//     "stats": [
-//       {
-//         "value": 80,
-//         "name": "special-defense"
-//       },
-//       {
-//         "value": 80,
-//         "name": "special-attack"
-//       },
-//       {
-//         "value": 63,
-//         "name": "defense"
-//       },
-//       {
-//         "value": 62,
-//         "name": "attack"
-//       },
-//       {
-//         "value": 60,
-//         "name": "speed"
-//       },
-//       {
-//         "value": 60,
-//         "name": "hp"
-//       }
-//     ],
-//     "types": ["grass", "poison"],
-//     "sprites": {
-//       "front": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/2.png",
-//       "back":
-//         "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/2.png"
-//     }
+// {
 //   }
