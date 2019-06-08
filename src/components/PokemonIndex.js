@@ -8,14 +8,14 @@ class PokemonIndex extends React.Component {
   constructor(){
     super();
     this.state = {
-      allPokemon: []
+      pokemons: []
     }
   }
   componentWillMount = () => {
     fetch('http://localhost:3000/pokemon')
       .then(r => r.json())
-      .then(allPokemonObj => {
-        this.setState({allPokemon: allPokemonObj})
+      .then(pokemonsObj => {
+        this.setState({pokemons:[...pokemonsObj]})
       })
   }
   render() {
@@ -25,7 +25,7 @@ class PokemonIndex extends React.Component {
         <br />
         <Search onSearchChange={_.debounce(() => console.log('🤔'), 500)} showNoResults={false} />
         <br />
-        <PokemonCollection />
+        <PokemonCollection pokemons={this.state.pokemons} />
         <br />
         <PokemonForm />
       </div>

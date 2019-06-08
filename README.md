@@ -3,7 +3,7 @@
 ## React Code Challenge Practice
 
 ## Project goals:
-  - create an index displaying pokemon 'cards'
+  <!-- - create an index displaying pokemon 'cards' -->
     - render each pokemon name, picture, and hp in a card
     - when clicked, the card should toggle between displaying the front and back pictures
   - allow users to search in order to narrow down the cards shown on the page
