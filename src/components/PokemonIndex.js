@@ -4,7 +4,20 @@ import PokemonForm from './PokemonForm'
 import { Search } from 'semantic-ui-react'
 import _ from 'lodash'
 
-class PokemonPage extends React.Component {
+class PokemonIndex extends React.Component {
+  constructor(){
+    super();
+    this.state = {
+      allPokemon: []
+    }
+  }
+  componentWillMount = () => {
+    fetch('http://localhost:3000/pokemon')
+      .then(r => r.json())
+      .then(allPokemonObj => {
+        this.setState({allPokemon: allPokemonObj})
+      })
+  }
   render() {
     return (
       <div>
@@ -20,4 +33,4 @@ class PokemonPage extends React.Component {
   }
 }
 
-export default PokemonPage
+export default PokemonIndex
