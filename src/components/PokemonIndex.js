@@ -26,13 +26,12 @@ class PokemonIndex extends React.Component {
     console.log(input.value)
     this.setState({value:input.value})
     setTimeout(() => {
-      if (this.state.value.length < 1) {
-      return this.setState({results:[],value:""})
-    } else {
-      console.log(this.state.pokemons);
-      //filter by name then return all pokemon that start with value
-    }
-
+      if (this.state.value.length < 1) return this.setState({results:[] ,value:""})
+      const re = new RegExp(_.escapeRegExp(this.state.value), 'i')
+      const isMatch = result => re.test(result.name)
+      this.setState({
+        results: _.filter(this.state.pokemons, isMatch),
+      })
     }, 300)
   }
   //   _.debounce((input) => console.log("Hi",), 500)
@@ -43,10 +42,14 @@ class PokemonIndex extends React.Component {
         <h1>Pokemon Searcher</h1>
         <br />
         <Search
-          onSearchChange={this.onSearchChange}
+          onSearchChange={_.debounce(this.onSearchChange, 500, {showNoResults:false}
+)}
         />
         <br />
-        <PokemonCollection pokemons={this.state.pokemons} />
+        <PokemonCollection
+          pokemons={this.state.pokemons}
+          results={this.state.results}
+          />
         <br />
         <PokemonForm />
       </div>

@@ -17,11 +17,26 @@ class PokemonCollection extends React.Component {
       )
     )
   }
+    generateSearchCard = () => {
+      return this.props.results.map(result => (
+        <PokemonCard
+          pokeId={result.id}
+          key={result.name}
+          name={result.name}
+          hp={result.hp}
+          frontSprite={result.sprites.front}
+          backSprite={result.sprites.back}
+
+         />
+       )
+     )
+  }
   render() {
+    const resultsArrayLength = this.props.results.length
     return (
 
       <Card.Group itemsPerRow={6}>
-        {this.generatePokemonCard()}
+      {(resultsArrayLength > 0)?(this.generateSearchCard()):(this.generatePokemonCard())}
       </Card.Group>
     )
   }
