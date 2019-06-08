@@ -12,7 +12,6 @@ class PokemonCard extends React.Component {
     this.setState({isShowing: !this.state.isShowing})
   }
   render() {
-    console.log(this.props.frontSprite);
     return (
       (this.state.isShowing) ? (
         <div>
@@ -31,7 +30,7 @@ class PokemonCard extends React.Component {
         handleToggleClick={this.handleToggleClick}
        /></div>
      )
-     
+
     )
   }
 }
