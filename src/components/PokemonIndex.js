@@ -83,7 +83,7 @@ class PokemonIndex extends React.Component {
             "name": "attack"
           },
           {
-            "value": 100,
+            "value": newPokemon.hp,
             "name": "hp"
           }
         ],
@@ -91,8 +91,8 @@ class PokemonIndex extends React.Component {
           "psychic"
         ],
         "sprites": {
-          "front": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/151.png",
-          "back": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/151.png"
+          "front": newPokemon.frontUrl,
+          "back": newPokemon.backUrl
         }
       })
     })
