@@ -1,25 +1,36 @@
 import React from 'react'
-import { Card } from 'semantic-ui-react'
+import FrontPokemonCard from './FrontPokemonCard'
+import BackPokemonCard from './BackPokemonCard'
+
+
 
 class PokemonCard extends React.Component {
+  state = {
+    isShowing: true
+  }
+  handleToggleClick = (e) => {
+    this.setState({isShowing: !this.state.isShowing})
+  }
   render() {
     return (
-      <Card>
+      (this.state.isShowing) ? (
         <div>
-          <div className="image">
-            <img alt="oh no!" />
-          </div>
-          <div className="content">
-            <div className="header">POKEMON NAME HERE</div>
-          </div>
-          <div className="extra content">
-            <span>
-              <i className="icon heartbeat red" />
-              POKEMON HP HERE hp
-            </span>
-          </div>
-        </div>
-      </Card>
+      <FrontPokemonCard
+        pokeId={this.props.id}
+        name={this.props.name}
+        hp={this.props.hp}
+        frontSprite={this.props.frontSprite}
+        handleToggleClick={this.handleToggleClick}
+       /></div>) : (
+       <div><BackPokemonCard
+        pokeId={this.props.id}
+        name={this.props.name}
+        hp={this.props.hp}
+        backSprite={this.props.backSprite}
+        handleToggleClick={this.handleToggleClick}
+       /></div>
+     )
+
     )
   }
 }
