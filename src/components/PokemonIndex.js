@@ -8,7 +8,8 @@ class PokemonPage extends React.Component {
   constructor(props){
     super(props)
     this.state = {
-      pokemons: []
+      pokemons: [],
+      search: ''
     }
   }
 
@@ -24,6 +25,23 @@ class PokemonPage extends React.Component {
   } // END FENTCHING
 
 
+  // SEARCH POKEMON => NOT WORKING !
+  handleSearchChange = (e, {value}) => {
+    this.setState({
+      search: value
+    })
+  } //END SEARCHING
+
+
+  // ADD THE NEWLY CREATED POKEMON AND UPDATE THE STATE
+  addPokemon = (newPokemon) => {
+    let newPokemons = [...this.state.pokemons]
+    newPokemons.push(newPokemon)
+    this.setState({
+      pokemons: newPokemons
+    })
+  } // END UPDATING
+
   render() {
     // console.log('Pokemon Page State', this.state)
     // console.log('Pokemon Page Props', this.props)
@@ -32,12 +50,16 @@ class PokemonPage extends React.Component {
       <div>
         <h1>Pokemon Searcher</h1>
         <br />
-        <Search onSearchChange={_.debounce(() => console.log('🤔'), 500)} showNoResults={false} />
+        <Search
+          onSearchChange={_.debounce(this.handleSearchChange, 500)}
+          showNoResults={false}
+          />
         <br />
         <PokemonCollection
           pokemons={this.state.pokemons}/>
         <br />
-        <PokemonForm />
+        <PokemonForm
+          addPokemon={this.addPokemon}/>
       </div>
     )
   }

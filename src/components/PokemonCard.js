@@ -9,14 +9,16 @@ class PokemonCard extends React.Component {
     }
   }
 
+  // UPDATE THE STATE ON CLICK
   handleClick = (e) => {
     this.setState({
       cardPicture: !this.state.cardPicture
     })
-  }
+  } // END UPDATING
+
 
   render() {
-    console.log('Pokemon Card Props', this.props)
+    // console.log('Pokemon Card Props', this.props)
 
     return (
       <Card onClick={this.handleClick}>
