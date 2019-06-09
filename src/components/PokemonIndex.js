@@ -25,8 +25,8 @@ class PokemonPage extends React.Component {
 
 
   render() {
-    console.log('Pokemon Page State', this.state)
-    console.log('Pokemon Page Props', this.props)
+    // console.log('Pokemon Page State', this.state)
+    // console.log('Pokemon Page Props', this.props)
 
     return (
       <div>
