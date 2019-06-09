@@ -6,20 +6,19 @@ class PokemonCollection extends React.Component {
   render() {
     console.log('Pokemon Collection Props', this.props)
 
-    const renderCards = this.props.pokemons.map(pokemon => { return <Card.Group>
-            <PokemonCard
-              key={pokemon.id}
-              itemsPerRow={6}
-              name={pokemon.name}
-              picture={pokemon.sprites.front}
-              hp={pokemon.stats[5].value} />
-          </Card.Group>
+    const renderCards = this.props.pokemons.map(pokemon => { return <PokemonCard
+            key={pokemon.id}
+            name={pokemon.name}
+            picture={pokemon.sprites.front}
+            hp={pokemon.stats[5].value} />
     })
 
     return (
       <div>
         <h1>Hello From Pokemon Collection</h1>
+        <Card.Group itemsPerRow={6}>
         { renderCards }
+        </Card.Group>
       </div>
     )
   }
