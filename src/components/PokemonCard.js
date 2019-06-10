@@ -16,28 +16,33 @@ class PokemonCard extends React.Component {
     })
   } // END UPDATING
 
+  // FIND HP VALUE OUT OF ALL THE OTHER STATS
+  findHp = () => {
+    return this.props.poke.stats.find(stat => stat.name === 'hp').value
+  } // END FINDING
 
   render() {
     // console.log('Pokemon Card Props', this.props)
+    const {name, sprites} = this.props.poke
 
     return (
       <Card onClick={this.handleClick}>
         <div>
           <div className="image">
             { this.state.cardPicture ? (
-              <img src={this.props.pictureFront} alt="oh no!" />
+              <img src={sprites.front} alt={name} />
             ) : (
-              <img src={this.props.pictureBack} alt="oh no!" />
+              <img src={sprites.back} alt={name} />
             ) }
 
           </div>
           <div className="content">
-            <div className="header">{this.props.name}</div>
+            <div className="header">{name.toUpperCase()}</div>
           </div>
           <div className="extra content">
             <span>
               <i className="icon heartbeat red" />
-              {this.props.hp}
+              {this.findHp()}
             </span>
           </div>
         </div>

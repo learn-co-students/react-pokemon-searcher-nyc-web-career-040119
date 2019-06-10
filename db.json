@@ -7368,6 +7368,34 @@
         "back": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/1.png"
       },
       "id": 209
+    },
+    {
+      "name": "hello",
+      "stats": [
+        {
+          "value": "100",
+          "name": "hp"
+        }
+      ],
+      "sprites": {
+        "front": "change",
+        "back": "me"
+      },
+      "id": 210
+    },
+    {
+      "name": "reset",
+      "stats": [
+        {
+          "value": "the form",
+          "name": "hp"
+        }
+      ],
+      "sprites": {
+        "front": "hello",
+        "back": "do"
+      },
+      "id": 211
     }
   ]
 }

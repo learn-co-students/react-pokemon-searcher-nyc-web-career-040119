@@ -44,44 +44,22 @@ class PokemonForm extends React.Component {
     })
     .then(response => response.json())
     .then(pokemon => {
-      return this.props.addPokemon(pokemon)
-
-      // RESET THE FORM????
       this.setState({
         name: '',
         hp: '',
         frontUrl: '',
         backUrl: ''
-      }) // END RESETTING THE FORM
+      })
+      return this.props.addPokemon(pokemon)
     })
 
   } // END SUBMITTING THE FORM
 
-  // CAPTURE NAME INPUT
-  handleChangeName = (e) => {
-    this.setState({
-      name: e.target.value
-    })
-  } // END CAPTURING
 
-  // CAPTURE HP INPUT
-  handleChangeHp = (e) => {
+  // CAPTURE ALL THE INPUT
+  handleChange = (e) => {
     this.setState({
-      hp: e.target.value
-    })
-  } // END CAPTURING
-
-  // CAPTURE FRONT URL INPUT
-  handleChangeFrontUrl = (e) => {
-    this.setState({
-      frontUrl: e.target.value
-    })
-  } // END CAPTURING
-
-  // CAPTURE BACK URL INPUT
-  handleChangeBackUrl = (e) => {
-    this.setState({
-      backUrl: e.target.value
+      [e.target.name]: e.target.value
     })
   } // END CAPTURING
 
@@ -97,23 +75,30 @@ class PokemonForm extends React.Component {
               fluid label="Name"
               placeholder="Name"
               name="name"
-              onChange={this.handleChangeName}
+              onChange={this.handleChange}
+              value={this.state.name}
               />
             <Form.Input
               fluid label="hp"
               placeholder="hp"
               name="hp"
-              onChange={this.handleChangeHp}/>
+              onChange={this.handleChange}
+              value={this.state.hp}
+              />
             <Form.Input
               fluid label="Front Image URL"
               placeholder="url"
               name="frontUrl"
-              onChange={this.handleChangeFrontUrl}/>
+              onChange={this.handleChange}
+              value={this.state.frontUrl}
+              />
             <Form.Input
               fluid label="Back Image URL"
               placeholder="url"
               name="backUrl"
-              onChange={this.handleChangeBackUrl}/>
+              onChange={this.handleChange}
+              value={this.state.backUrl}
+              />
           </Form.Group>
           <Form.Button>Submit</Form.Button>
         </Form>
