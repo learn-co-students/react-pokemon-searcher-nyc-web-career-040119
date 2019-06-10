@@ -47,7 +47,8 @@ class PokemonPage extends React.Component {
     // console.log('Pokemon Page State', this.state)
     // console.log('Pokemon Page Props', this.props)
 
-    const filteredPokemon = this.state.pokemons.filter(pokemon => { return pokemon.name.includes(this.state.search.toLowerCase()) })
+    const filteredPokemon = this.state.pokemons.filter(pokemon => { return pokemon.name.includes(this.state.search.toLowerCase()) || pokemon.types.join().includes(this.state.search.toLowerCase())
+    })
 
     return (
       <div>
