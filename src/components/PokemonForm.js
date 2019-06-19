@@ -55,6 +55,7 @@ class PokemonForm extends React.Component {
   }
 
   render() {
+    const { name, hp, frontUrl, backUrl } = this.state
     console.log(this.state);
     return (
       <div>
@@ -66,7 +67,8 @@ class PokemonForm extends React.Component {
             <Form.Input fluid label="Front Image URL" placeholder="url" name="frontUrl" onChange={this.handleChange} value={this.state.frontUrl} />
             <Form.Input fluid label="Back Image URL" placeholder="url" name="backUrl" onChange={this.handleChange} value={this.state.backUrl} />
           </Form.Group>
-          <Form.Button>Submit</Form.Button>
+
+          <Form.Button disabled={(!!name && !!hp && !!frontUrl && !!backUrl) ? false : true }>Submit</Form.Button>
         </Form>
       </div>
     )
